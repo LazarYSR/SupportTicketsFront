@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - REACT_APP_BACKEND_URL=http://backend:3000 # Utilisation du nom de service du backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
